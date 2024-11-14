@@ -1,7 +1,6 @@
 import pygame
 import sys
 
-# Pygame 초기화
 pygame.init()
 
 # 화면 설정
@@ -9,7 +8,7 @@ screen_width, screen_height = 1280, 700
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("튜토리얼")
 
-# 색상 및 속성 정의
+# 색상
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 character_step = 50  # 이동할 거리 (한 칸)
@@ -21,12 +20,12 @@ game_area_y, game_area_height = 100, screen_height - 200
 # 캐릭터 설정
 character_image = pygame.image.load("character1.png")
 character_image = pygame.transform.scale(character_image, (50, 50))
-character_pos = pygame.Vector2(game_area_x, screen_height - character_image.get_height() - 100) # 지피티를 이용하여 캐릭터 위치 설정
+character_pos = pygame.Vector2(game_area_x, screen_height - character_image.get_height() - 100) 
 
 # 파괴 가능한 벽 설정
 obstacle_image = pygame.image.load("obstacle.png")
 obstacle_image = pygame.transform.scale(obstacle_image, (50, 50))
-destructible_walls = [pygame.Rect(game_area_x + i * 50, 450, 50, 50) for i in range(game_area_width // 50)] # 지피티 사용하여 벽 일렬로 생성
+destructible_walls = [pygame.Rect(game_area_x + i * 50, 450, 50, 50) for i in range(game_area_width // 50)]  # 28, 52~60 colliderect 참고
 
 # 끝 지점 설정
 end_point = pygame.Rect(screen_width - 140, 100, 50, 50)
@@ -39,7 +38,7 @@ while True:
             sys.exit()
         elif event.type == pygame.KEYDOWN:
             # 방향 키 입력에 따라 이동
-            movement = pygame.Vector2(0, 0)
+            movement = pygame.Vector2(0, 0) 
             if event.key == pygame.K_LEFT and character_pos.x > game_area_x:
                 movement.x = -character_step
             elif event.key == pygame.K_RIGHT and character_pos.x < game_area_x + game_area_width - character_image.get_width():
